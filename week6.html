@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #message {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+
+        #newElement {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: lightblue;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #toggleButton {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Webpage Example</h1>
+
+    <p id="message">This is some text.</p>
+
+    <button id="changeTextButton">Change Text</button>
+    <button id="changeColorButton">Change Text Color</button>
+    <button id="addElementButton">Add New Element</button>
+    <button id="removeElementButton">Remove Element</button>
+
+    <div id="newElement" class="hidden">I am a new element!</div>
+    <button id="toggleButton" class="hidden">Toggle Visibility</button>
+
+    <script>
+        // Change Text Content Dynamically
+        document.getElementById('changeTextButton').addEventListener('click', function() {
+            document.getElementById('message').textContent = "The text has been changed!";
+        });
+
+        // Modify CSS Styles Dynamically
+        document.getElementById('changeColorButton').addEventListener('click', function() {
+            document.getElementById('message').style.color = "blue";
+        });
+
+        // Add New Element
+        document.getElementById('addElementButton').addEventListener('click', function() {
+            var newElement = document.createElement('div');
+            newElement.textContent = "New element added dynamically!";
+            newElement.style.backgroundColor = "lightgreen";
+            newElement.style.padding = "10px";
+            newElement.style.marginTop = "10px";
+            document.body.appendChild(newElement);
+            document.getElementById('toggleButton').classList.remove('hidden');
+        });
+
+        // Remove Element
+        document.getElementById('removeElementButton').addEventListener('click', function() {
+            var newElement = document.querySelector('div');
+            if (newElement) {
+                newElement.remove();
+            }
+        });
+
+        // Toggle Visibility of New Element
+        document.getElementById('toggleButton').addEventListener('click', function() {
+            var newElement = document.getElementById('newElement');
+            if (newElement.classList.contains('hidden')) {
+                newElement.classList.remove('hidden');
+                document.getElementById('toggleButton').textContent = "Hide Element";
+            } else {
+                newElement.classList.add('hidden');
+                document.getElementById('toggleButton').textContent = "Show Element";
+            }
+        });
+    </script>
+</body>
+</html>
