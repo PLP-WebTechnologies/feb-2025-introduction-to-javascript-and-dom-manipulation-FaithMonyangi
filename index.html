@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM Manipulation</title>
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        main {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Example of dynamic CSS class */
+        .red-text {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>JavaScript DOM Manipulation Example</h1>
+    </header>
+
+    <main>
+        <section id="content-section">
+            <p id="text-content">This is some static text.</p>
+            <button id="change-text-btn">Change Text Content</button>
+            <button id="change-style-btn">Change Text Color</button>
+            <button id="add-element-btn">Add New Element</button>
+            <button id="remove-element-btn">Remove Element</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created with love by [Your Name]</p>
+    </footer>
+
+    <script>
+        // Function to change text content dynamically
+        document.getElementById('change-text-btn').addEventListener('click', function() {
+            const textElement = document.getElementById('text-content');
+            textElement.textContent = "The text has been changed dynamically!";
+        });
+
+        // Function to modify CSS styles (e.g., change text color)
+        document.getElementById('change-style-btn').addEventListener('click', function() {
+            const textElement = document.getElementById('text-content');
+            textElement.classList.add('red-text'); // Add CSS class to change text color
+        });
+
+        // Function to add a new element to the DOM
+        document.getElementById('add-element-btn').addEventListener('click', function() {
+            const newElement = document.createElement('p');  // Create a new <p> element
+            newElement.textContent = "This is a new dynamically added element!";
+            document.getElementById('content-section').appendChild(newElement);  // Append the new element
+        });
+
+        // Function to remove the last added element
+        document.getElementById('remove-element-btn').addEventListener('click', function() {
+            const contentSection = document.getElementById('content-section');
+            if (contentSection.lastElementChild) {
+                contentSection.removeChild(contentSection.lastElementChild);  // Remove the last child element
+            }
+        });
+    </script>
+
+</body>
+</html>
